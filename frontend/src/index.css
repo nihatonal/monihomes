@@ -69,6 +69,12 @@ ul {
 .section_wrapper {
   margin: 0 auto;
   height: 800px;
-  padding: 100px 50px;
-  border: 1px solid red;
+  padding: 100px;
+}
+
+.section_title {
+  font-family: var(--Nunito_Sans);
+  font-weight: 600;
+  font-size: 32px;
+  margin-bottom: 20px;
 }
