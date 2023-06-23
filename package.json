@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@fancyapps/ui": "^5.0.19",
     "react-icons": "^4.9.0",
     "react-router-dom": "^6.13.0",
     "react-transition-group": "^4.4.5"
