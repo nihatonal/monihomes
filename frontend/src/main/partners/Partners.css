@@ -1,0 +1,228 @@
+.partners_wrapper {
+  padding-bottom: 50px;
+  height: auto;
+  /* background-color: #fff;
+  border-radius: 0 350px 350px 0; */
+}
+.partners_wrapper .section_title {
+  color: #5e5d5d;
+  font-family: var(--dancing);
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.partners_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 40px;
+  padding-top: 0;
+}
+.partner_name {
+  font-family: var(--Nunito_Sans);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #5e5d5d;
+}
+.partner_link {
+  display: block;
+}
+.partners_images {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+.partner_image::after {
+  content: " ";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+}
+.partner_image img {
+  height: 200px;
+  transition: all 0.4s;
+}
+.partner_image img:hover {
+  transform: scale(1.2);
+}
+.yoyo_villa {
+  height: 600px;
+  margin-top: 10px;
+  display: grid;
+  grid-template-areas:
+    "gallery1 gallery1 gallery2 gallery2 gallery3 gallery5"
+    "gallery1 gallery1 gallery2 gallery2 gallery4 gallery5"
+    "gallery6 gallery7 gallery2 gallery2 gallery9 gallery9"
+    "gallery6 gallery8 gallery2 gallery2 gallery9 gallery9";
+  gap: 10px;
+}
+.yoyo_villa_item {
+  border-radius: 6px;
+  transition: all 0.5s;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  border: 4px solid #313131;
+  border-image: linear-gradient(
+    to right top,
+    #7c7c7c,
+    rgb(240, 241, 241),
+    #7c7c7c
+  );
+  border-image-slice: 1;
+  position: relative;
+}
+
+.yoyo_villa_item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.yoyo_villa_item:nth-last-child(9) {
+  grid-area: gallery9;
+}
+.yoyo_villa_item:nth-last-child(8) {
+  grid-area: gallery8;
+}
+.yoyo_villa_item:nth-last-child(7) {
+  grid-area: gallery7;
+}
+.yoyo_villa_item:nth-last-child(6) {
+  grid-area: gallery6;
+}
+.yoyo_villa_item:nth-last-child(5) {
+  grid-area: gallery5;
+}
+.yoyo_villa_item:nth-last-child(4) {
+  grid-area: gallery4;
+}
+.yoyo_villa_item:nth-last-child(3) {
+  grid-area: gallery3;
+}
+.yoyo_villa_item:nth-last-child(2) {
+  grid-area: gallery2;
+}
+.yoyo_villa_item:nth-last-child(1) {
+  grid-area: gallery1;
+}
+
+@media only screen and (max-width: 767px) {
+  .partners_wrapper .section_title {
+    font-weight: 600;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  .partner_name {
+    font-size: 16px;
+  }
+  .yoyo_villa {
+    height: 600px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-areas:
+      "gallery2 gallery2 gallery1"
+      "gallery2 gallery2 gallery3"
+      "gallery7 gallery7 gallery7"
+      "gallery6 gallery5 gallery4"
+      "gallery8 gallery9 gallery9"
+      "gallery8 gallery9 gallery9";
+    gap: 10px;
+  }
+}
+/*villa masal*/
+.villa_masal {
+  height: 600px;
+  margin-top: 10px;
+  display: grid;
+  grid-template-areas:
+    "gallery7 gallery7 gallery2 gallery2 gallery3 gallery4"
+    "gallery7 gallery7 gallery2 gallery2 gallery5 gallery6"
+    "gallery1 gallery8 gallery11 gallery11 gallery12 gallery12"
+    "gallery9 gallery10 gallery11 gallery11 gallery12 gallery12";
+  gap: 10px;
+}
+.villa_masal_item {
+  border-radius: 6px;
+  transition: all 0.5s;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  box-shadow: 5px 5px 15px rgba(179, 172, 172, 0.3);
+  border: 4px solid #313131;
+  border-image: linear-gradient(
+    to right top,
+    #7c7c7c,
+    rgb(240, 241, 241),
+    #7c7c7c
+  );
+  border-image-slice: 1;
+  position: relative;
+}
+
+.villa_masal_item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.villa_masal_item:nth-last-child(12) {
+  grid-area: gallery12;
+}
+
+.villa_masal_item:nth-last-child(11) {
+  grid-area: gallery11;
+}
+.villa_masal_item:nth-last-child(10) {
+  grid-area: gallery10;
+}
+.villa_masal_item:nth-last-child(9) {
+  grid-area: gallery9;
+}
+.villa_masal_item:nth-last-child(8) {
+  grid-area: gallery8;
+}
+.villa_masal_item:nth-last-child(7) {
+  grid-area: gallery7;
+}
+.villa_masal_item:nth-last-child(6) {
+  grid-area: gallery6;
+}
+.villa_masal_item:nth-last-child(5) {
+  grid-area: gallery5;
+}
+.villa_masal_item:nth-last-child(4) {
+  grid-area: gallery4;
+}
+.villa_masal_item:nth-last-child(3) {
+  grid-area: gallery3;
+}
+.villa_masal_item:nth-last-child(2) {
+  grid-area: gallery2;
+}
+.villa_masal_item:nth-last-child(1) {
+  grid-area: gallery1;
+}
+
+@media only screen and (max-width: 767px) {
+  .villa_masal {
+    height: 600px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-areas:
+      "gallery1 gallery2 gallery2"
+      "gallery3 gallery2 gallery2"
+      "gallery6 gallery5 gallery4"
+      "gallery12 gallery12 gallery9"
+      "gallery12 gallery12 gallery8"
+      "gallery10 gallery11 gallery7";
+    gap: 10px;
+  }
+}

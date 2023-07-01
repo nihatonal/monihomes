@@ -1,10 +1,15 @@
 .navbar {
-  /* width: 940px;
-  height: 40px; */
+  width: 540px;
+  /* height: 40px; */
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   transition: all 750ms;
+}
+@media only screen and (max-width: 1000px) {
+  .navbar {
+    width: 340px;
+  }
 }
 @media only screen and (max-width: 767px) {
   .navbar {
@@ -32,5 +37,5 @@
 }
 
 .active-nav-item {
-  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--secondary-color);
 }
