@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useHttpClient } from "../shared/hooks/http-hook";
 import { AuthContext } from "../shared/context/auth-context";
 import GuestTable from './components/GuestTable';
+import LoadingSpinner from '../shared/UI/LoadingSpinner';
+import DeleteModal from './components/DeleteModal';
 import './User.css';
 function User(props) {
     const auth = useContext(AuthContext);
@@ -10,23 +12,24 @@ function User(props) {
     const [info, setInfo] = useState('');
     const [endDate, setEndDate] = useState();
     const [guests, setGuests] = useState();
-
+    const [show, setShow] = useState(false);
+    const [deleteId, setDeleteId] = useState();
     useEffect(() => {
         const fetchUsers = async () => {
             try {
                 const responseData = await sendRequest(
                     process.env.REACT_APP_BACKEND_URL + "/getdates",
                 );
-                console.log(responseData.guests);
+               
                 setGuests(responseData.guests)
             } catch (err) { }
         };
         fetchUsers();
 
     }, [sendRequest]);
+
     const submitHandler = async (e) => {
         e.preventDefault();
-        console.log(startDate, endDate)
         try {
             const responseData = await sendRequest(
                 process.env.REACT_APP_BACKEND_URL + "/savedates",
@@ -39,23 +42,26 @@ function User(props) {
                     "Content-Type": "application/json",
                 }
             );
-            console.log(responseData);
+            setGuests([...guests, responseData.guest]);
+
         } catch (err) {
         }
     }
     const confirmDeleteHandler = async (e) => {
+        e.preventDefault();
         console.log(e.target.parentNode.parentNode.parentNode.id)
         try {
             await sendRequest(
-                process.env.REACT_APP_BACKEND_URL + `/${e.target.parentNode.parentNode.parentNode.id}`,
+                process.env.REACT_APP_BACKEND_URL + `/${deleteId}`,
                 "DELETE",
                 null,
                 {
                     Authorization: "Bearer " + auth.token,
                 }
             );
-            const posts = guests.filter((item) => item.id !== e.target.parentNode.parentNode.parentNode.id);
+            const posts = guests.filter((item) => item.id !== deleteId);
             setGuests(posts);
+            setShow(false)
         } catch (err) { }
     };
     return (
@@ -65,17 +71,17 @@ function User(props) {
                 <form className="inputs_container" onSubmit={submitHandler}>
                     <label htmlFor="startDate" className="input_label">
                         Check-in
-                        <input type={'date'} value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                        <input type={'date'} value={startDate} onChange={(e) => setStartDate(e.target.value)} required />
                         <span></span>
                     </label>
                     <label htmlFor="startDate" className="input_label">
                         Check-out
-                        <input type={'date'} value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+                        <input type={'date'} value={endDate} onChange={(e) => setEndDate(e.target.value)} required />
                         <span></span>
                     </label>
                     <label htmlFor="startDate" className="input_label info_label">
                         Information
-                        <textarea type={'text'} value={info} onChange={(e) => setInfo(e.target.value)} />
+                        <textarea type={'text'} value={info} onChange={(e) => setInfo(e.target.value)} required />
 
                     </label>
 
@@ -84,10 +90,14 @@ function User(props) {
                         className={'save_btn'}
                         disabled={!startDate && !endDate && info.length < 0}
                     >
-                        Save
+                        {isLoading ? <LoadingSpinner /> : 'Save'}
                     </button>
                 </form>
-                <GuestTable data={guests} onDelete={confirmDeleteHandler} />
+                <DeleteModal show={show} delete={confirmDeleteHandler} cancel={() => setShow(false)} />
+                <GuestTable data={guests} onDelete={(e) => {
+                    setShow(true)
+                    setDeleteId(e.target.parentNode.parentNode.parentNode.id)
+                }} />
             </div>
         </div>
     );

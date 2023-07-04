@@ -1,3 +1,6 @@
+.user_wrapper {
+  position: relative;
+}
 .user_container {
   height: auto;
   padding: 150px 0 100px;
@@ -89,4 +92,33 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 .save_btn:disabled {
   background-color: rgba(34, 100, 80, 0.41);
+}
+
+.save_btn .lds-dual-ring {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.save_btn .lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+.save_btn .loading-spinner__overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
